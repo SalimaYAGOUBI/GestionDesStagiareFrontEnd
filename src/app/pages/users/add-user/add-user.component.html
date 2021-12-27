@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-header *ngIf="isEdit === false">Ajouter un utilisateur</nb-card-header>
+            <nb-card-header *ngIf="isEdit === true">Modifier un utilisateur</nb-card-header>
+
+            <nb-card-body>
+                <form [formGroup]="UserForm" (ngSubmit)="onSubmit()">
+                    <fieldset class="row">
+
+                        <div class="col-6 form-group row">
+                            <label for="nomUser" class="label col-sm-3 col-form-label">Nom de l'utilisateur</label>
+                            <div class="col-sm-9">
+                                <input formControlName="nomUser" type="text" nbInput fullWidth id="nomUser" placeholder="Nom user" required/>
+                            </div>
+                        </div>
+
+                        <div class="col-6 form-group row">
+                            <label for="prenomUser" class="label col-sm-3 col-form-label">Prenom de l'utilisateur</label>
+                            <div class="col-sm-9">
+                                <input type="text" formControlName="prenomUser" nbInput fullWidth id="prenomUser" placeholder="Prenom User" required />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="row">
+
+                        <div class="col-6 form-group row">
+                            <label for="emailUser" class="label col-sm-3 col-form-label">Email de l'utilisateur</label>
+                            <div class="col-sm-9">
+                                <input formControlName="emailUser" type="text" nbInput fullWidth id="emailUser" placeholder="Email user" required/>
+                            </div>
+                        </div>
+                        <div class="col-6 form-group row">
+                            <label for="profileU" class="label col-sm-3 col-form-label">Profile de l'utilisateur</label>
+                                <div class="col-sm-9">
+                                    <nb-select id="profileU" formControlName="profileUser" fullWidth>
+                                        <nb-option *ngFor="let p of profiles" [value]="p.role">{{p.role}}</nb-option>
+                                    </nb-select>
+                                </div>
+                          </div>
+                        
+                    </fieldset>
+
+                    
+                    <hr/>
+                    <div class="form-group row">
+                        <div class="offset-sm-9 col-sm-3">
+                            <button class="mr-2" (click)="onCancel()" type="button" nbButton>
+                              Cancel
+                          </button>
+                            <button type="submit" nbButton status="primary" [nbSpinner]="loadingIndicator" nbSpinnerStatus="warning" nbSpinnerSize="large" nbSpinnerMessage="">
+                              Save
+                          </button>
+                        </div>
+                    </div>
+
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

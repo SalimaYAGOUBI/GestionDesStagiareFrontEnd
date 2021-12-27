@@ -1,0 +1,18 @@
+<nb-card>
+    <nb-card-header>
+        <div class="row">
+            La liste des utilisateurs
+        </div>
+    </nb-card-header>
+
+    <nb-card-body>
+        <ng2-smart-table
+          [settings]="settings"
+          [source]="users"
+          (create)="goCreateUser($event)"
+          (edit)="goUpdateUser($event)"
+          (delete)="DeleteUser($event)"
+        >
+        </ng2-smart-table>
+    </nb-card-body>
+</nb-card>
